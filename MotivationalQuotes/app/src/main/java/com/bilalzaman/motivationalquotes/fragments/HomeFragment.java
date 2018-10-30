@@ -42,9 +42,9 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
-        txtTitle = view.findViewById(R.id.txtTitle);
-        txtTitle.setText("Quotes");
-        txtTitle.setVisibility(View.VISIBLE);
+//        txtTitle = view.findViewById(R.id.txtTitle);
+//        txtTitle.setText("Quotes");
+//        txtTitle.setVisibility(View.VISIBLE);
 
 //        backgroundView = view.findViewById(R.id.viewBackground);
 //        backgroundViewBlack = view.findViewById(R.id.viewBackground_black);

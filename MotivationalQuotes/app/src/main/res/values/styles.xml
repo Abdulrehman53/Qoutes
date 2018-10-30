@@ -16,9 +16,9 @@
         <item name="colorAccent">@color/dark_red</item>
 
     </style>
-    
+
     <!--<style name="AdobeDevanagari" parent="android:Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/adobedevanagari_regular</item>-->
+    <!--<item name="android:fontFamily">@font/adobedevanagari_regular</item>-->
     <!--</style>-->
 
 
