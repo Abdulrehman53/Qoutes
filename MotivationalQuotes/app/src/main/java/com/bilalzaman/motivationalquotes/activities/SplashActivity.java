@@ -100,10 +100,10 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == REQUEST_WRITE_PERMISSION){
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(this, "Permission Gransted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
                 UIHelper.openActivity(this, HomeActivity.class);
             } else {
-                Toast.makeText(this, "Permission Deied", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
                 finish();
             }
         }
