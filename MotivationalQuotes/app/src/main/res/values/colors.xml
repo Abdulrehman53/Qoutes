@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#be0909</color>
-    <color name="colorPrimaryDark">#c71d1c</color>
-    <color name="colorAccent">#133e70</color>
+
+    <color name="colorPrimary">#e42120</color>
+    <color name="colorPrimaryDark">#e42120</color>
+    <color name="colorAccent">#FF4081</color>
     <color name="black">#000</color>
     <color name="white">#fff</color>
+    <color name="textcolor">#ff0000</color>
+    <color name="textcolor_light">#ffa09f</color>
+    <color name="semi_tranparent">#77000000</color>
+    <color name="nav_red">#e42120</color>
+    <color name="text_red">#dc2c2c</color>
     <color name="dark_red">#db201f</color>
+    <color name="nevi_blue">#133e70</color>
     <color name="light_grey">#f5f5f5</color>
     <color name="dark_grey">#4e4e4e</color>
+    <color name="yellow">#ffc51e</color>
+    <color name="green">#26a92d</color>
+    <color name="transparent">#AA78746b</color>
+    <color name="trans_back">#7c756f</color>
+    <color name="six_five">#656565</color>
+    <color name="ee">#eeeeee</color>
+    <color name="light_black">#262626</color>
+    <color name="eight_five">#858585</color>
+    <color name="seven_f">#7f7f7f</color>
     <color name="hint">#7b7b7b</color>
     <color name="extra_light_grey">#dbdbd1</color>
+    <color name="bg_row_background">#fa315b</color>
+
 </resources>
