@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1059197092987",
+    "firebase_url": "https://motivationalquotes-23639.firebaseio.com",
+    "project_id": "motivationalquotes-23639",
+    "storage_bucket": "motivationalquotes-23639.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059197092987:android:dc922b2c14197249",
+        "android_client_info": {
+          "package_name": "com.bilalzaman.motivationalquotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059197092987-lple3oe2u853fa46n64eolmpc4m1p8e8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bilalzaman.motivationalquotes",
+            "certificate_hash": "d7c4ff06ced4383473c94a7ef63a320e194be4fa"
+          }
+        },
+        {
+          "client_id": "1059197092987-vale9qgbudgclfju8b9pl4a96mjjb258.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnIYDj4nPqYNzrQJiAgIeWCZ_NZoYe74k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1059197092987-vale9qgbudgclfju8b9pl4a96mjjb258.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
