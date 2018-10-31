@@ -30,7 +30,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="Quotes of the Day"
+            android:text="@string/text_quoteDay"
             android:textColor="@color/black"
             android:textSize="@dimen/large_normal"
             android:textStyle="bold"
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:text="Get all the Latest Quotes of the Day"
+            android:text="@string/texr_quote_desc"
             android:textColor="@color/black"
             android:textSize="@dimen/small"
             android:textStyle="normal"
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:text="Get notified when our best articles go viral"
+            android:text="@string/text_notification_desc"
             android:textColor="@color/black"
             android:textSize="@dimen/small"
             android:textStyle="normal"
@@ -158,7 +158,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:text="Login with us to see what people are sharing"
+            android:text="@string/text_login_desc"
             android:textColor="@color/black"
             android:textSize="@dimen/small"
             android:textStyle="normal"
@@ -262,7 +262,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:text="Rate us for the best user experience"
+            android:text="@string/text_rate_desc"
             android:textColor="@color/black"
             android:textSize="@dimen/small"
             android:textStyle="normal"
@@ -314,7 +314,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:text="Contact us if you have any query"
+            android:text="@string/text_contact_desc"
             android:textColor="@color/black"
             android:textSize="@dimen/small"
             android:textStyle="normal"
@@ -336,4 +336,234 @@
             app:layout_constraintVertical_bias="0.0" />
 
     </android.support.constraint.ConstraintLayout>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/contact_cardView"
+        android:layout_width="0dp"
+        android:layout_height="380dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:visibility="gone"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/contact_const"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/extra_light_grey">
+
+            <ImageButton
+                android:id="@+id/imgcancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/cancel" />
+
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/search_rec"
+                android:ems="10"
+                android:hint="@string/hint_name"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgcancel" />
+
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/search_rec"
+                android:ems="10"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress"
+                app:layout_constraintEnd_toEndOf="@+id/edtName"
+                app:layout_constraintStart_toStartOf="@+id/edtName"
+                app:layout_constraintTop_toBottomOf="@+id/edtName" />
+
+            <EditText
+                android:id="@+id/edtSubject"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/search_rec"
+                android:ems="10"
+                android:hint="@string/hint_subject"
+                android:inputType="textEmailAddress"
+                app:layout_constraintEnd_toEndOf="@+id/edtEmail"
+                app:layout_constraintStart_toStartOf="@+id/edtEmail"
+                app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+
+            <EditText
+                android:id="@+id/edtComment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/search_rec"
+                android:ems="10"
+                android:hint="@string/hint_comment"
+                android:inputType="textMultiLine"
+                app:layout_constraintEnd_toEndOf="@+id/edtSubject"
+                app:layout_constraintStart_toStartOf="@+id/edtSubject"
+                app:layout_constraintTop_toBottomOf="@+id/edtSubject" />
+
+            <TextView
+                android:id="@+id/btnSubmit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/password_botton"
+                android:gravity="center"
+                android:text="@string/btn_submit"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtComment" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/login_cardView"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/regular_quote">
+
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- TODO: Update blank fragment layout -->
+
+            <ImageButton
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:background="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/cancel" />
+
+
+            <View
+                android:id="@+id/facebook_frame"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/empty_rectangle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cancel" />
+
+            <View
+                android:id="@+id/google_frame"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/empty_rectangle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/facebook_frame" />
+
+            <ImageView
+                android:id="@+id/facebook_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/facebook_frame"
+                app:layout_constraintStart_toStartOf="@+id/facebook_frame"
+                app:layout_constraintTop_toTopOf="@+id/facebook_frame"
+                app:srcCompat="@drawable/facebook" />
+
+            <ImageView
+                android:id="@+id/google_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/google_frame"
+                app:layout_constraintStart_toStartOf="@+id/google_frame"
+                app:layout_constraintTop_toTopOf="@+id/google_frame"
+                app:srcCompat="@drawable/google" />
+
+            <TextView
+                android:id="@+id/facebook_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/text_facebook"
+                android:textColor="@color/dark_red"
+                android:textSize="@dimen/large"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/facebook_frame"
+                app:layout_constraintStart_toEndOf="@+id/facebook_logo"
+                app:layout_constraintTop_toTopOf="@+id/facebook_frame" />
+
+            <TextView
+                android:id="@+id/google_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:text="@string/text_google"
+                android:textColor="@color/dark_red"
+                android:textSize="@dimen/large"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/google_frame"
+                app:layout_constraintStart_toEndOf="@+id/google_logo"
+                app:layout_constraintTop_toTopOf="@+id/google_frame" />
+
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>

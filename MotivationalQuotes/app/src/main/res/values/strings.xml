@@ -13,8 +13,21 @@
     <string name="share_using">Share</string>
     <string name="notification">Notification</string>
     <string name="login_with_facebook">Login with Facebook</string>
-    <string name="share_our_app">Share Our App</string>
-    <string name="rate_us">Rate Us</string>
-    <string name="contact_us">Contact Us</string>
+    <string name="share_our_app">Share our App</string>
+    <string name="rate_us">Rate us</string>
+    <string name="contact_us">Contact us</string>
     <string name="share_desc"><![CDATA[Share our app with your Friend & Family]]></string>
+    <string name="text_quoteDay">Quotes of the Day</string>
+    <string name="texr_quote_desc">Get all the Latest Quotes of the Day</string>
+    <string name="text_notification_desc">Get notified when our best articles go viral</string>
+    <string name="text_login_desc">Login with us to see what people are sharing</string>
+    <string name="text_rate_desc">Rate us for the best user experience</string>
+    <string name="text_contact_desc">Contact us if you have any query</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_subject">Subject</string>
+    <string name="hint_comment">Comment</string>
+    <string name="btn_submit">Submit</string>
+    <string name="text_facebook">Connect to Facebook</string>
+    <string name="text_google">Connect to Google</string>
 </resources>
