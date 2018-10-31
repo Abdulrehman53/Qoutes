@@ -10,18 +10,19 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/NoAppTheme">
-        <activity android:name=".activities.SplashActivity"
-            android:noHistory="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <!--<activity android:name=".activities.SplashActivity"-->
+            <!--android:noHistory="true">-->
+            <!---->
+        <!--</activity>-->
+        <activity android:name=".activities.HomeActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
-        <activity android:name=".activities.HomeActivity" />
         <activity android:name=".activities.ContactusActivity" />
         <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.NotificationActivity"/>
     </application>
 
 </manifest>

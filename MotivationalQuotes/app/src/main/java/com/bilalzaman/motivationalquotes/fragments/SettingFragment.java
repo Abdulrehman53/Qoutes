@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import com.bilalzaman.motivationalquotes.R;
 import com.bilalzaman.motivationalquotes.activities.ContactusActivity;
 import com.bilalzaman.motivationalquotes.activities.LoginActivity;
-import com.bilalzaman.motivationalquotes.activities.NotificationActivity;
 import com.bilalzaman.motivationalquotes.helpers.UIHelper;
 
 /**
@@ -58,7 +56,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.notification_layout:{
-                UIHelper.openActivity(getActivity(),NotificationActivity.class);
+               // UIHelper.openActivity(getActivity(),NotificationActivity.class);
                 break;
             }
             case R.id.login_layout:{
