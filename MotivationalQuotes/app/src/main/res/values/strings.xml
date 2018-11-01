@@ -30,4 +30,5 @@
     <string name="btn_submit">Submit</string>
     <string name="text_facebook">Connect to Facebook</string>
     <string name="text_google">Connect to Google</string>
+    <string name="text_fav">No Quote have marked Favourite yet!</string>
 </resources>

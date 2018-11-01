@@ -3,6 +3,7 @@ package com.bilalzaman.motivationalquotes.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
@@ -12,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bilalzaman.motivationalquotes.R;
 import com.bilalzaman.motivationalquotes.helpers.UIHelper;
@@ -25,9 +28,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
 
     private ConstraintLayout notificationLayout, loginLayout, shareLayout, rateLayout, contactLayout;
     private Context context;
-    private TextView txtTitle;
+    private TextView txtTitle, btnSubmit;
     private CardView contact_cardView, login_cardView;
     private ImageButton imgCancel, loginCancel;
+    private EditText edtName, edtEmail, edtSubject, edtComment;
 
     public SettingFragment() {
         // Required empty public constructor
@@ -52,6 +56,18 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         imgCancel = view.findViewById(R.id.imgcancel);
         login_cardView = view.findViewById(R.id.login_cardView);
         loginCancel = view.findViewById(R.id.cancel);
+        edtName = view.findViewById(R.id.edtName);
+        edtEmail = view.findViewById(R.id.edtEmail);
+        edtSubject = view.findViewById(R.id.edtSubject);
+        edtComment = view.findViewById(R.id.edtComment);
+        btnSubmit = view.findViewById(R.id.btnSubmit);
+
+        notificationLayout.setOnClickListener(this);
+        loginLayout.setOnClickListener(this);
+        shareLayout.setOnClickListener(this);
+        rateLayout.setOnClickListener(this);
+        contactLayout.setOnClickListener(this);
+        btnSubmit.setOnClickListener(this);
 
         imgCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,24 +88,39 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        notificationLayout.setOnClickListener(this);
-        loginLayout.setOnClickListener(this);
-        shareLayout.setOnClickListener(this);
-        rateLayout.setOnClickListener(this);
-        contactLayout.setOnClickListener(this);
-
         return view;
+
+
+    }
+    private void getMail() {
+
+        String[] To = {"billalzaman8@gmail.com"};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, To);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, edtName.getText().toString());
+        //emailIntent.putExtra(Intent.EXTRA_EMAIL,edtEmail.getText().toString());
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, edtSubject.getText().toString());
+        emailIntent.putExtra(Intent.EXTRA_TEXT, edtComment.getText().toString());
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            getActivity().finish();
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.notification_layout: {
-                // UIHelper.openActivity(getActivity(),NotificationActivity.class);
                 break;
             }
             case R.id.login_layout: {
-                // UIHelper.openActivity(getActivity(),LoginActivity.class);
+
                 Animation slideRight = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_left);
 
                 if (login_cardView.getVisibility() == View.GONE) {
@@ -102,7 +133,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                 Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Motivation Quotes");
-                shareIntent.putExtra(Intent.EXTRA_TEXT, "");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "checking purpose");
                 context.startActivity(Intent.createChooser(shareIntent, context.getResources().getString(R.string.share_using)));
                 break;
             }
@@ -111,13 +142,17 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                 break;
             }
             case R.id.contact_layout: {
-                //   UIHelper.openActivity(getActivity(), ContactusActivity.class);
                 Animation slideUp = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up);
 
                 if (contact_cardView.getVisibility() == View.GONE) {
                     contact_cardView.startAnimation(slideUp);
                     contact_cardView.setVisibility(View.VISIBLE);
                 }
+                break;
+            }
+            case R.id.btnSubmit: {
+                getMail();
+                UIHelper.showLongToastInCenter(getActivity(), "Sending...");
                 break;
             }
             default: {
