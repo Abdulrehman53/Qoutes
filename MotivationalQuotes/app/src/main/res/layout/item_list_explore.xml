@@ -22,15 +22,15 @@
 
         <ImageView
             android:id="@+id/imgExplore"
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/images" />
 
         <TextView
             android:id="@+id/txtTitleQuote"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="15dp"

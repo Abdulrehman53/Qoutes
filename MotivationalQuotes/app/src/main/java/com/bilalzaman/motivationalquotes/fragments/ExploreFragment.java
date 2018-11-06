@@ -55,7 +55,7 @@ public class ExploreFragment extends Fragment {
     private void setRecyclerView(){
         adapter = new ExploreAdapter(context, data);
         //recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false));
-        recyclerView.setLayoutManager(new GridLayoutManager(context,2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false));
         recyclerView.setAdapter(adapter);
         setData();
     }
