@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -63,6 +64,7 @@
             android:textColor="@color/white"
             android:textSize="24sp"
 
+
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -90,14 +92,13 @@
             android:layout_marginLeft="8dp"
             android:drawableStart="@drawable/favourite"
             android:drawableLeft="@drawable/favourite"
-            android:gravity="center"
+
             android:text="Like"
             android:textColor="@color/black"
             android:textSize="@dimen/normal"
             android:textStyle="bold"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/txtSave"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -106,17 +107,21 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+
             android:drawableStart="@drawable/save_black"
             android:drawableLeft="@drawable/save_black"
-            android:gravity="center"
             android:text="Save"
             android:textColor="@color/black"
             android:textSize="@dimen/normal"
             android:textStyle="bold"
+            android:paddingLeft="12dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/txtCopy"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/txtLike"
+            app:layout_constraintStart_toEndOf="@+id/txtLikeIncrease"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -126,9 +131,9 @@
             android:layout_margin="10dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
+
             android:drawableStart="@drawable/copy_white"
             android:drawableLeft="@drawable/copy_white"
-            android:gravity="center"
             android:text="Copy"
             android:textColor="@color/black"
             android:textSize="@dimen/normal"
@@ -150,6 +155,7 @@
             android:drawableStart="@drawable/share_white"
             android:drawableLeft="@drawable/share_white"
             android:gravity="center"
+            android:paddingRight="8dp"
             android:text="Share"
             android:textColor="@color/black"
             android:textSize="@dimen/normal"
@@ -159,6 +165,21 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/txtCopy"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtLikeIncrease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/normal"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/txtLike"
+            app:layout_constraintStart_toEndOf="@+id/txtLike"
+            app:layout_constraintTop_toTopOf="@+id/txtLike" />
 
 
     </android.support.constraint.ConstraintLayout>

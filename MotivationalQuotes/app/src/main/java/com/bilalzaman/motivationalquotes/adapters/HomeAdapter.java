@@ -22,7 +22,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bilalzaman.motivationalquotes.R;
+import com.bilalzaman.motivationalquotes.constants.Constants;
+import com.bilalzaman.motivationalquotes.helpers.PreferenceHelper;
 import com.bilalzaman.motivationalquotes.models.HomeModel;
+import com.google.firebase.FirebaseApp;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -91,6 +94,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         holder.txtLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int likeInt = 0;
+                likeInt = likeInt + 1;
+                holder.displayLike(likeInt);
 
             }
         });
@@ -174,12 +180,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
+
         return data.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtQuote;
+        private TextView txtQuote, txtLikeIncrease;
         private View backgroundView, backgroundViewGrey, backgroundViewBlack;
         private TextView txtCopy, txtShare, txtLike, txtSave;
 
@@ -193,7 +200,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             txtSave = itemView.findViewById(R.id.txtSave);
             txtCopy = itemView.findViewById(R.id.txtCopy);
             txtShare = itemView.findViewById(R.id.txtShare);
+            txtLikeIncrease = itemView.findViewById(R.id.txtLikeIncrease);
 
+        }
+
+        public void displayLike(int number){
+            txtLikeIncrease.setText(""+number);
         }
     }
 }

@@ -14,6 +14,8 @@ public class HomeModel {
         this.catAuthor = catAuthor;
     }
 
+    public HomeModel() {
+    }
 
     public String getBackgroundImage() {
         return backgroundImage;

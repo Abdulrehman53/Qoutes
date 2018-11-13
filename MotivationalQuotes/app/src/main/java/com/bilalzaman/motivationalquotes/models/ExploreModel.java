@@ -5,19 +5,19 @@ package com.bilalzaman.motivationalquotes.models;
  */
 public class ExploreModel {
 
-    private int backgroundImage;
+    private String backgroundImage;
     private String catTitle;
 
-    public ExploreModel(int backgroundImage, String catTitle) {
+    public ExploreModel(String backgroundImage, String catTitle) {
         this.backgroundImage = backgroundImage;
         this.catTitle = catTitle;
     }
 
-    public int getBackgroundImage() {
+    public String getBackgroundImage() {
         return backgroundImage;
     }
 
-    public void setBackgroundImage(int backgroundImage) {
+    public void setBackgroundImage(String backgroundImage) {
         this.backgroundImage = backgroundImage;
     }
 
