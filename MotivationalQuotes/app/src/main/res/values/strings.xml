@@ -31,4 +31,38 @@
     <string name="text_facebook">Connect to Facebook</string>
     <string name="text_google">Connect to Google</string>
     <string name="text_fav">No Quote have marked Favourite yet!</string>
+
+
+    <!--Explore more categories array list -->
+    <string-array name="explore_list">
+        <item>Alone</item>
+        <item>Happiness</item>
+        <item>Love</item>
+        <item>Life</item>
+        <item>Anniversary</item>
+
+        <item>Birthday</item>
+        <item>Emotional</item>
+        <item>Romantic</item>
+        <item>Success</item>
+        <item>Friends</item>
+
+        <item>Christmas</item>
+        <item>Morning</item>
+        <item>Night</item>
+        <item>Heart Touching</item>
+        <item>Marriage</item>
+
+        <item>Relationship</item>
+        <item>Husband Wife</item>
+        <item>Funny</item>
+        <item>Tired</item>
+    </string-array>
+
+    <string name="no_internet_title">Network Problem</string>
+    <string name="no_internet_message">No Internet Connection Found. \nPlease Check Your Internet Connection . . .</string>
+    <string name="no_internet_positive_text">Try Again</string>
+    <string name="no_internet_negative_text">Quit</string>
+    <string name="NO_INTERNET_DIALOG">no_internet_dialog</string>
+
 </resources>

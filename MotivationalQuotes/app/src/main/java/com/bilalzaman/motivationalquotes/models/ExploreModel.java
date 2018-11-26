@@ -7,10 +7,20 @@ public class ExploreModel {
 
     private String backgroundImage;
     private String catTitle;
+    private String id;
 
-    public ExploreModel(String backgroundImage, String catTitle) {
+    public ExploreModel(String id, String catTitle) {
+        this.id = id;
         this.backgroundImage = backgroundImage;
         this.catTitle = catTitle;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getBackgroundImage() {

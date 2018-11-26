@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -73,114 +72,90 @@
 
     </android.support.constraint.ConstraintLayout>
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:id="@+id/lower_layout"
         android:layout_width="0dp"
         android:layout_height="50dp"
-
         android:background="@color/white"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/inner_parent">
 
         <TextView
             android:id="@+id/txtLike"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="16dp"
             android:drawableStart="@drawable/favourite"
             android:drawableLeft="@drawable/favourite"
 
             android:text="Like"
-            android:textColor="@color/black"
-            android:textSize="@dimen/normal"
-            android:textStyle="bold"
+            android:drawablePadding="2dp"
+            android:textAlignment="center"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtSave"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-
-            android:drawableStart="@drawable/save_black"
-            android:drawableLeft="@drawable/save_black"
-            android:text="Save"
             android:textColor="@color/black"
             android:textSize="@dimen/normal"
-            android:textStyle="bold"
-            android:paddingLeft="12dp"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/txtCopy"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/txtLikeIncrease"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtCopy"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-
-            android:drawableStart="@drawable/copy_white"
-            android:drawableLeft="@drawable/copy_white"
-            android:text="Copy"
-            android:textColor="@color/black"
-            android:textSize="@dimen/normal"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/txtShare"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/txtSave"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtShare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="10dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:drawableStart="@drawable/share_white"
-            android:drawableLeft="@drawable/share_white"
-            android:gravity="center"
-            android:paddingRight="8dp"
-            android:text="Share"
-            android:textColor="@color/black"
-            android:textSize="@dimen/normal"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/txtCopy"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtLikeIncrease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:text=""
+            android:layout_marginLeft="4dp"
+            android:layout_weight="1"
+            android:text="1k"
             android:textColor="@color/black"
-            android:textStyle="bold"
             android:textSize="@dimen/normal"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="@+id/txtLike"
-            app:layout_constraintStart_toEndOf="@+id/txtLike"
-            app:layout_constraintTop_toTopOf="@+id/txtLike" />
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/save_black"
+            android:drawableLeft="@drawable/save_black"
+            android:text="Save"
+            android:drawablePadding="2dp"
+            android:gravity="bottom|top"
+            android:textColor="@color/black"
+            android:textSize="@dimen/normal"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:id="@+id/txtCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:drawablePadding="2dp"
+            android:drawableStart="@drawable/copy_white"
+            android:drawableLeft="@drawable/copy_white"
+            android:text="Copy"
+
+            android:gravity="bottom|top"
+            android:textColor="@color/black"
+            android:textSize="@dimen/normal"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/share_white"
+            android:drawableLeft="@drawable/share_white"
+            android:text="Share"
+            android:drawablePadding="2dp"
+            android:gravity="bottom|top"
+            android:paddingTop="3dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/normal"
+            android:textStyle="bold" />
 
 
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

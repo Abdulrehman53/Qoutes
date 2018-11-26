@@ -1,4 +1,4 @@
-package com.bilalzaman.motivationalquotes.activities;
+package com.bilalzaman.motivationalquotes.views.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

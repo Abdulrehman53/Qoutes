@@ -1,30 +1,23 @@
 package com.bilalzaman.motivationalquotes.fragments;
 
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.bilalzaman.motivationalquotes.R;
-import com.bilalzaman.motivationalquotes.adapters.ExploreAdapter;
-import com.bilalzaman.motivationalquotes.adapters.HomeAdapter;
+import com.bilalzaman.motivationalquotes.database.FavDatabase;
+import com.bilalzaman.motivationalquotes.views.adapters.ExploreAdapter;
 import com.bilalzaman.motivationalquotes.models.ExploreModel;
-import com.bilalzaman.motivationalquotes.models.HomeModel;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -42,6 +35,7 @@ public class ExploreFragment extends Fragment {
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
 
+
     public ExploreFragment() {
         // Required empty public constructor
     }
@@ -58,27 +52,6 @@ public class ExploreFragment extends Fragment {
         txtTitle.setVisibility(View.VISIBLE);
 
         setRecyclerView();
-
-        mFirebaseInstance = FirebaseDatabase.getInstance();
-        mFirebaseDatabase = mFirebaseInstance.getReference().child("Categories");
-
-        mFirebaseDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (data != null) {
-                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                        String value = dataSnapshot1.getValue(String.class);
-                        data.add(new ExploreModel("",value));
-                        adapter.notifyDataSetChanged();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Failed to read", databaseError.toString());
-            }
-        });
         return view;
     }
 
@@ -88,5 +61,15 @@ public class ExploreFragment extends Fragment {
         //recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false));
         recyclerView.setAdapter(adapter);
 
+        settingData();
+
+    }
+
+    private void settingData() {
+        ExploreModel model = new ExploreModel("list1","Motivate");
+        data.add(model);
+
+        model = new ExploreModel("list2","Motivate");
+        data.add(model);
     }
 }

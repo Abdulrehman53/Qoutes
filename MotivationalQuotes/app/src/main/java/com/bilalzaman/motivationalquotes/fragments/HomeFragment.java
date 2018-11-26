@@ -2,8 +2,11 @@ package com.bilalzaman.motivationalquotes.fragments;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,8 +17,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bilalzaman.motivationalquotes.R;
-import com.bilalzaman.motivationalquotes.adapters.HomeAdapter;
+import com.bilalzaman.motivationalquotes.dialogs.CustomAlertDialog;
+import com.bilalzaman.motivationalquotes.helpers.UIHelper;
+import com.bilalzaman.motivationalquotes.interfaces.CheckNetworkConnection;
 import com.bilalzaman.motivationalquotes.models.HomeModel;
+import com.bilalzaman.motivationalquotes.views.adapters.HomeAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,19 +52,32 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        context = container.getContext();
         recyclerView = view.findViewById(R.id.recyclerView);
         txtTitle = view.findViewById(R.id.txtTitle);
         txtTitle.setText("Quotes");
         txtTitle.setVisibility(View.VISIBLE);
 
         setRecyclerView();
+       // checkNetworkConnection();
+        loadingDataFirebase();
 
+
+        return view;
+    }
+
+    private void setRecyclerView() {
+        adapter = new HomeAdapter(context, data);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void loadingDataFirebase() {
         mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = mFirebaseInstance.getReference().child("Quotes");
 
@@ -68,7 +87,7 @@ public class HomeFragment extends Fragment {
                 if (data != null) {
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                         String value = dataSnapshot1.getValue(String.class);
-                        data.add(new HomeModel(value,""));
+                        data.add(new HomeModel(value, ""));
                         adapter.notifyDataSetChanged();
                     }
                 }
@@ -80,12 +99,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        return view;
     }
 
-    private void setRecyclerView() {
-        adapter = new HomeAdapter(context, data);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(adapter);
-    }
 }
