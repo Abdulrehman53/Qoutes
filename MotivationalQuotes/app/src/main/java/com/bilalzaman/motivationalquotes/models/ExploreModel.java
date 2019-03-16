@@ -1,34 +1,50 @@
 package com.bilalzaman.motivationalquotes.models;
 
+
+
 /**
- * Created by BilalZaman on 20/10/2018.
+ * Created by BilalZaman on 23/11/2018.
  */
+
 public class ExploreModel {
 
-    private String backgroundImage;
-    private String catTitle;
-    private String id;
 
-    public ExploreModel(String id, String catTitle) {
-        this.id = id;
-        this.backgroundImage = backgroundImage;
-        this.catTitle = catTitle;
-    }
+    private int catId;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getBackgroundImage() {
-        return backgroundImage;
+    private int id;
+    private int isFavourite;
+    private String catTitle,catQuote;
+
+    public String getCatQuote() {
+        return catQuote;
     }
 
-    public void setBackgroundImage(String backgroundImage) {
-        this.backgroundImage = backgroundImage;
+    public void setCatQuote(String catQuote) {
+        this.catQuote = catQuote;
+    }
+
+    public ExploreModel() {
+    }
+
+    public ExploreModel(int isFavourite, String catTitle) {
+        this.isFavourite = isFavourite;
+        this.catTitle = catTitle;
+    }
+
+    public int getIsFavourite() {
+        return isFavourite;
+    }
+
+    public void setIsFavourite(int isFavourite) {
+        this.isFavourite = isFavourite;
     }
 
     public String getCatTitle() {
@@ -37,5 +53,13 @@ public class ExploreModel {
 
     public void setCatTitle(String catTitle) {
         this.catTitle = catTitle;
+    }
+
+    public int getCatId() {
+        return catId;
+    }
+
+    public void setCatId(int catId) {
+        this.catId = catId;
     }
 }

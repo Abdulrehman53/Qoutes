@@ -47,17 +47,17 @@ public class PreferenceHelper {
         return sp.getInt(key, defval);
     }
 
-//    public void setString(String key, String val){
-//        SharedPreferences preferences = context_.getSharedPreferences(Constants.PREF_NAMES, Activity.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = preferences.edit();
-//
-//        editor.putString( key, val );
-//        editor.commit();
-//		/*SharedPreferences sp=PreferenceManager.getDefaultSharedPreferences(context_);
-//		Editor ed=sp.edit();
-//		ed.putString(key, val);
-//		ed.commit();*/
-//    }
+    public void setString(String key, String val){
+        SharedPreferences preferences = context_.getSharedPreferences(Constants.PREF_NAMES, Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString( key, val );
+        editor.commit();
+		/*SharedPreferences sp=PreferenceManager.getDefaultSharedPreferences(context_);
+		Editor ed=sp.edit();
+		ed.putString(key, val);
+		ed.commit();*/
+    }
 //    public void setAppString(String key, String val){
 //        SharedPreferences preferences = context_.getSharedPreferences( Constants.PREF_APP, Activity.MODE_PRIVATE );
 //        SharedPreferences.Editor editor = preferences.edit();

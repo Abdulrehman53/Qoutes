@@ -2,6 +2,7 @@
     <string name="app_name">Motivational Quotes</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Home</string>
+    <string name="title_author">Author</string>
     <string name="title_explore">Explore</string>
     <string name="title_favorites">Favourite</string>
     <string name="title_setting">Setting</string>
@@ -59,10 +60,19 @@
         <item>Tired</item>
     </string-array>
 
+
     <string name="no_internet_title">Network Problem</string>
     <string name="no_internet_message">No Internet Connection Found. \nPlease Check Your Internet Connection . . .</string>
     <string name="no_internet_positive_text">Try Again</string>
     <string name="no_internet_negative_text">Quit</string>
     <string name="NO_INTERNET_DIALOG">no_internet_dialog</string>
+    <string name="bar_explore_more">Explore More</string>
+    <string name="bar_favourite">Favourite</string>
+    <string name="bar_setting">Setting</string>
+    <string name="toast_sending">Sending Your Mail...</string>
+    <string name="toast_correct_option">Please choose correct option</string>
 
+    <string name="long_shortcut">long test</string>
+    <string name="short_shorcut">test</string>
+    <string name="sharing_text">Integrating your goals into your digital life is an easy way to keep your goals top of mind and help keep you motivated, Download the app and stay motivate</string>
 </resources>

@@ -2,31 +2,22 @@ package com.bilalzaman.motivationalquotes.fragments;
 
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.view.WindowManager;
+import android.widget.EditText;
 
 import com.bilalzaman.motivationalquotes.R;
-import com.bilalzaman.motivationalquotes.dialogs.CustomAlertDialog;
-import com.bilalzaman.motivationalquotes.helpers.UIHelper;
-import com.bilalzaman.motivationalquotes.interfaces.CheckNetworkConnection;
-import com.bilalzaman.motivationalquotes.models.HomeModel;
+import com.bilalzaman.motivationalquotes.database.DatabaseAccess;
+import com.bilalzaman.motivationalquotes.models.QuotesListModel;
 import com.bilalzaman.motivationalquotes.views.adapters.HomeAdapter;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -35,22 +26,19 @@ import java.util.ArrayList;
  */
 public class HomeFragment extends Fragment {
 
-    private ArrayList<HomeModel> data = new ArrayList<>();
-    private ArrayList<String> dataString = new ArrayList<>();
+    private ArrayList<QuotesListModel> data = new ArrayList<>();
     private HomeAdapter adapter;
-    private LayoutInflater inflater;
     private Context context;
     private RecyclerView recyclerView;
-    private View backgroundView, backgroundViewGrey, backgroundViewBlack;
-    private TextView txtTitle;
-    private DatabaseReference mFirebaseDatabase;
-    private FirebaseDatabase mFirebaseInstance;
-    private HomeModel dataValue = new HomeModel();
+    private DatabaseAccess databaseAccess;
+    private EditText edtSearch;
+    private QuotesListModel model = new QuotesListModel();
 
 
     public HomeFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,45 +47,52 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         context = container.getContext();
         recyclerView = view.findViewById(R.id.recyclerView);
-        txtTitle = view.findViewById(R.id.txtTitle);
-        txtTitle.setText("Quotes");
-        txtTitle.setVisibility(View.VISIBLE);
+
+        edtSearch = view.findViewById(R.id.edtSearch);
+        edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
 
         setRecyclerView();
-       // checkNetworkConnection();
-        loadingDataFirebase();
-
 
         return view;
     }
 
-    private void setRecyclerView() {
-        adapter = new HomeAdapter(context, data);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(adapter);
+    private void filter(String text) {
+        ArrayList<QuotesListModel> filteredList = new ArrayList<>();
+
+        for (QuotesListModel item : data) {
+            if (item.getAuthorName().toLowerCase().contains(text.toLowerCase()) || item.getQuote().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        adapter.filterList(filteredList);
     }
 
-    private void loadingDataFirebase() {
-        mFirebaseInstance = FirebaseDatabase.getInstance();
-        mFirebaseDatabase = mFirebaseInstance.getReference().child("Quotes");
 
-        mFirebaseDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (data != null) {
-                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                        String value = dataSnapshot1.getValue(String.class);
-                        data.add(new HomeModel(value, ""));
-                        adapter.notifyDataSetChanged();
-                    }
-                }
-            }
+    private void setRecyclerView() {
+        databaseAccess = DatabaseAccess.getInstance(context);
+        databaseAccess.open();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Failed to read", databaseError.toString());
-            }
-        });
+        data = databaseAccess.getData();
+        adapter = new HomeAdapter(context, data);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(adapter);
+        databaseAccess.close();
 
     }
 

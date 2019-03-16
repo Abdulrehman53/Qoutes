@@ -13,7 +13,7 @@
     <color name="text_red">#dc2c2c</color>
     <color name="dark_red">#ac1a19</color>
     <color name="nevi_blue">#ef133e70</color>
-    <color name="light_grey">#f5f5f5</color>
+    <color name="light_grey">#8d393939</color>
     <color name="dark_grey">#4e4e4e</color>
     <color name="yellow">#ffc51e</color>
     <color name="green">#26a92d</color>
@@ -31,5 +31,8 @@
     <color name="gradient_Indigo">#ce580991</color>
     <color name="gradient_deep_puple">#673AB7</color>
     <color name="gradient_purple">#1C004D</color>
+
+    <color name="black_gradient">#87000000</color>
+    <color name="black_gr">#63000000</color>
 
 </resources>

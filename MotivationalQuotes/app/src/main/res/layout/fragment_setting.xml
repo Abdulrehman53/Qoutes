@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res/android"
+    >
+    <data>
+        <variable
+            name="handlers"
+            type="com.bilalzaman.motivationalquotes.fragments.SettingFragment.MySettingHandlers"></variable>
+    </data>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,70 +15,13 @@
     tools:context=".fragments.SettingFragment">
 
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/regular_quote"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
-
-        <TextView
-            android:id="@+id/txtQuote_day"
-            android:layout_width="328dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/text_quoteDay"
-            android:textColor="@color/black"
-            android:textSize="@dimen/large_normal"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/quote_desc"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/texr_quote_desc"
-            android:textColor="@color/black"
-            android:textSize="@dimen/small"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="@+id/txtQuote_day"
-            app:layout_constraintStart_toStartOf="@+id/txtQuote_day"
-            app:layout_constraintTop_toBottomOf="@id/txtQuote_day" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="16dp"
-            android:background="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/quote_desc"
-            app:layout_constraintVertical_bias="0.0" />
-
-    </android.support.constraint.ConstraintLayout>
 
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/notification_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/regular_quote">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/txtNotification"
@@ -121,6 +71,7 @@
 
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
+            android:checked="true"
             app:layout_constraintBottom_toBottomOf="@+id/txtNotification"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/txtNotification"
@@ -129,63 +80,13 @@
 
     </android.support.constraint.ConstraintLayout>
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/login_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/notification_layout">
-
-        <TextView
-            android:id="@+id/txtLogin"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/login_with_facebook"
-            android:textColor="@color/black"
-            android:textSize="@dimen/large_normal"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/login_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/text_login_desc"
-            android:textColor="@color/black"
-            android:textSize="@dimen/small"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/txtLogin"
-            app:layout_constraintTop_toBottomOf="@id/txtLogin" />
-
-        <View
-            android:id="@+id/view2"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="16dp"
-            android:background="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_text"
-            app:layout_constraintVertical_bias="0.0" />
-
-    </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/share_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/login_layout">
+        android:onClick="@{handlers::onShare}"
+        app:layout_constraintTop_toBottomOf="@id/notification_layout">
 
         <TextView
             android:id="@+id/txtShare"
@@ -234,10 +135,64 @@
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/more_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{handlers::onMore}"
+        app:layout_constraintTop_toBottomOf="@id/share_layout">
+
+        <TextView
+            android:id="@+id/txtMore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="More Apps"
+            android:textColor="#000"
+            android:textSize="@dimen/large_normal"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/more_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Our Other Applications"
+            android:textColor="@color/black"
+            android:textSize="@dimen/small"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txtMore"
+            app:layout_constraintTop_toBottomOf="@id/txtMore" />
+
+        <View
+            android:id="@+id/view40"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="16dp"
+            android:background="#000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/more_desc"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/rate_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/share_layout">
+        android:onClick="@{handlers::onRate}"
+        app:layout_constraintTop_toBottomOf="@id/more_layout">
 
         <TextView
             android:id="@+id/txtRate"
@@ -284,287 +239,5 @@
             app:layout_constraintVertical_bias="0.0" />
 
     </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/contact_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/rate_layout">
-
-        <TextView
-            android:id="@+id/txtContact"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/contact_us"
-            android:textColor="#000"
-            android:textSize="@dimen/large_normal"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/contact_desc"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/text_contact_desc"
-            android:textColor="@color/black"
-            android:textSize="@dimen/small"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/txtContact"
-            app:layout_constraintTop_toBottomOf="@id/txtContact" />
-
-        <View
-            android:id="@+id/view5"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="16dp"
-            android:background="#000"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/contact_desc"
-            app:layout_constraintVertical_bias="0.0" />
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/contact_cardView"
-        android:layout_width="0dp"
-        android:layout_height="380dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:visibility="gone"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/contact_const"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/extra_light_grey">
-
-            <ImageButton
-                android:id="@+id/imgcancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/cancel" />
-
-            <EditText
-                android:id="@+id/edtName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/search_rec"
-                android:ems="10"
-                android:hint="@string/hint_name"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgcancel" />
-
-            <EditText
-                android:id="@+id/edtEmail"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/search_rec"
-                android:ems="10"
-                android:hint="@string/hint_email"
-                android:inputType="textEmailAddress"
-                app:layout_constraintEnd_toEndOf="@+id/edtName"
-                app:layout_constraintStart_toStartOf="@+id/edtName"
-                app:layout_constraintTop_toBottomOf="@+id/edtName" />
-
-            <EditText
-                android:id="@+id/edtSubject"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/search_rec"
-                android:ems="10"
-                android:hint="@string/hint_subject"
-                android:inputType="textEmailAddress"
-                app:layout_constraintEnd_toEndOf="@+id/edtEmail"
-                app:layout_constraintStart_toStartOf="@+id/edtEmail"
-                app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
-
-            <EditText
-                android:id="@+id/edtComment"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/search_rec"
-                android:ems="10"
-                android:hint="@string/hint_comment"
-                android:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="@+id/edtSubject"
-                app:layout_constraintStart_toStartOf="@+id/edtSubject"
-                app:layout_constraintTop_toBottomOf="@+id/edtSubject" />
-
-            <TextView
-                android:id="@+id/btnSubmit"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/password_botton"
-                android:gravity="center"
-                android:text="@string/btn_submit"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textColor="#fff"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtComment" />
-
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/login_cardView"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/regular_quote">
-
-        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/root"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <!-- TODO: Update blank fragment layout -->
-
-            <ImageButton
-                android:id="@+id/cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:background="@android:color/transparent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/cancel" />
-
-
-            <View
-                android:id="@+id/facebook_frame"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/empty_rectangle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cancel" />
-
-            <View
-                android:id="@+id/google_frame"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/empty_rectangle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/facebook_frame" />
-
-            <ImageView
-                android:id="@+id/facebook_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/facebook_frame"
-                app:layout_constraintStart_toStartOf="@+id/facebook_frame"
-                app:layout_constraintTop_toTopOf="@+id/facebook_frame"
-                app:srcCompat="@drawable/facebook" />
-
-            <ImageView
-                android:id="@+id/google_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/google_frame"
-                app:layout_constraintStart_toStartOf="@+id/google_frame"
-                app:layout_constraintTop_toTopOf="@+id/google_frame"
-                app:srcCompat="@drawable/google" />
-
-            <TextView
-                android:id="@+id/facebook_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/text_facebook"
-                android:textColor="@color/dark_red"
-                android:textSize="@dimen/large"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/facebook_frame"
-                app:layout_constraintStart_toEndOf="@+id/facebook_logo"
-                app:layout_constraintTop_toTopOf="@+id/facebook_frame" />
-
-            <TextView
-                android:id="@+id/google_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:text="@string/text_google"
-                android:textColor="@color/dark_red"
-                android:textSize="@dimen/large"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/google_frame"
-                app:layout_constraintStart_toEndOf="@+id/google_logo"
-                app:layout_constraintTop_toTopOf="@+id/google_frame" />
-
-
-        </android.support.constraint.ConstraintLayout>
-    </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>
+</layout>
